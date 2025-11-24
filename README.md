@@ -1,84 +1,80 @@
-Groundwater Storage Prediction Using Satellite Data
+# Groundwater Storage Prediction Using Satellite Data
 
-This project uses satellite datasets (GRACE and GLDAS) to estimate and predict groundwater storage changes. The main idea is to combine gravity-based water measurements with land surface model data and train a simple Artificial Neural Network (ANN) to predict groundwater anomalies.
+This project predicts groundwater storage anomalies using satellite datasets from **GRACE** and **GLDAS**.  
+The goal is to estimate groundwater changes by combining gravity-based total water storage data with land surface variables, and training an Artificial Neural Network (ANN) for prediction.
 
-This work is based on my M.Tech research paper.
+This work is part of my M.Tech research at VIT Bhopal.
 
-Project Summary
+---
 
-GRACE data provides total water storage anomalies.
+##  Project Summary
 
-GLDAS data provides soil moisture and other land surface variables.
+- **GRACE** provides Total Water Storage (TWS) anomalies  
+- **GLDAS** provides soil moisture and surface variables  
+- Groundwater anomaly is computed by combining both datasets  
+- Preprocessing includes:
+  - resampling
+  - cleaning
+  - normalization  
+- ANN model is trained to learn the relationship between satellite signals and groundwater variation  
+- Achieved **R² ≈ 0.90** on validation set  
 
-After aligning both datasets, groundwater anomaly is calculated.
+---
 
-An ANN model is trained using these combined features.
+## Data Sources
 
-The model learns the relationship between satellite inputs and groundwater variations.
+- **GRACE (Gravity Recovery and Climate Experiment)**
+  - Provides mass change measurements (TWS anomaly)
+- **GLDAS (Global Land Data Assimilation System)**
+  - Provides soil moisture and land surface variables
 
-What the Project Does
+---
 
-Loads GRACE and GLDAS satellite data (NetCDF format)
+##  Model Architecture (ANN)
 
-Preprocesses and aligns both datasets
-
-Computes groundwater storage anomaly
-
-Normalizes the inputs
-
-Trains a small ANN with two hidden layers
-
-Evaluates the model using R², RMSE, and MAE
-
-Model Details
-
-Input: GRACE LWE anomaly + GLDAS soil moisture
-
-Architecture:
-
-Dense(64, ReLU)
-
-Dense(32, ReLU)
-
-Dense(1, Linear)
-
-Optimizer: Adam
-
+```text
+Input Layer: GRACE + GLDAS features
+Dense (64, ReLU)
+Dense (32, ReLU)
+Dense (1, Linear)
 Loss: MSE
+Optimizer: Adam
+```
 
-Achieved R² around 0.90 on validation data
+---
 
-Why This Project Is Useful
+## 📂 Files in This Repository
 
-Groundwater levels are difficult to measure directly because ground sensors are expensive and sparse. Using satellite signals makes it possible to estimate groundwater changes at a regional scale. This can help in water management and drought monitoring.
+| File Name                               | Description |
+|-----------------------------------------|-------------|
+| `groundwater_ann.ipynb`                 | Notebook containing preprocessing, ANN training, and evaluation |
+| `Groundwater_ML_Research_Dhruv.pdf`     | Research paper describing methodology and results |
+| `README.md`                             | Project documentation |
 
-Tools and Libraries
+---
 
-Python
+## Tools & Libraries Used
 
-NumPy, Pandas
+- Python  
+- NumPy  
+- Pandas  
+- xarray  
+- scikit-learn  
+- TensorFlow / Keras  
+- Matplotlib  
 
-xarray (for NetCDF data)
+---
 
-TensorFlow / Keras
+## Results
 
-Matplotlib
+- ANN model learned seasonal groundwater variation patterns
+- Achieved high correlation (**R² ~ 0.90**)  
+- Shows potential for satellite-based groundwater monitoring
 
-scikit-learn
+---
 
-File Included
+##  Author
 
-groundwater_ann.ipynb – contains dataset loading, preprocessing, ANN model, and evaluation steps.
-
-Dataset Information
-
-GRACE: Provides Total Water Storage anomalies
-
-GLDAS: Provides soil moisture and related parameters
-(both datasets were downloaded separately and used for academic work)
-
-Author
-
-Dhruv Kukadiya
-M.Tech – AI & Data Science
-VIT Bhopal University
+**Dhruv Kukadiya**  
+M.Tech – AI & Data Science  
+VIT Bhopal University  
