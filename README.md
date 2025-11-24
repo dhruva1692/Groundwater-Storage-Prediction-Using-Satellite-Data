@@ -3,7 +3,7 @@
 This project predicts groundwater storage anomalies using satellite datasets from **GRACE** and **GLDAS**.  
 The goal is to estimate groundwater changes by combining gravity-based total water storage data with land surface variables, and training an Artificial Neural Network (ANN) for prediction.
 
-This work is part of my M.Tech research at VIT Bhopal.
+This work is part of my research 
 
 ---
 
@@ -47,7 +47,7 @@ Optimizer: Adam
 
 | File Name                               | Description |
 |-----------------------------------------|-------------|
-| `groundwater_ann.ipynb`                 | Notebook containing preprocessing, ANN training, and evaluation |
+| `groundwater.ipynb`                 | Notebook containing preprocessing, ANN training, and evaluation |
 | `Groundwater_ML_Research_Dhruv.pdf`     | Research paper describing methodology and results |
 | `README.md`                             | Project documentation |
 
